@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Simple JavaScript Game</title>
+    <title>Triage Game</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #e8e8e8;
+        }
+        h1 {
+            color: #333;
+        }
         canvas {
             border: 2px solid black;
             display: block;
             margin: 20px auto;
             background-color: #f0f0f0;
         }
+        #info {
+            margin-top: 20px;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
+    <h1>Triage Game</h1>
     <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <div id="info">Score: <span id="score">0</span></div>
     <script src="game.js"></script>
 </body>
 </html>
