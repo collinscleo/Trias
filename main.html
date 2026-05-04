@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trias - Ancient Greek Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Trias</h1>
+        <p class="game-info">Ancient Greek Game</p>
+
+        <div class="game-board">
+            <svg viewBox="0 0 400 400">
+                <!-- Center dot -->
+                <g class="position" data-position="6">
+                    <circle cx="200" cy="200" r="10" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                    <text x="200" y="208" text-anchor="middle" font-size="12" font-weight="bold" fill="#666">C</text>
+                </g>
+
+                <!-- Main circle -->
+                <circle cx="200" cy="200" r="120" fill="none" stroke="#333" stroke-width="3"/>
+
+                <!-- Positions around the circle (6 positions) -->
+                <!-- Top -->
+                <g class="position" data-position="0">
+                    <circle cx="200" cy="80" r="18" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                    <text x="200" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#666">0</text>
+                </g>
+
+                <!-- Top-right -->
+                <g class="position" data-position="1">
+                    <circle cx="303" cy="104" r="18" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                    <text x="303" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#666">1</text>
+                </g>
+
+                <!-- Bottom-right -->
+                <g class="position" data-position="2">
+                    <circle cx="303" cy="296" r="18" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                    <text x="303" y="304" text-anchor="middle" font-size="12" font-weight="bold" fill="#666">2</text>
+                </g>
+
+                <!-- Bottom -->
+                <g class="position" data-position="3">
+                    <circle cx="200" cy="320" r="18" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                    <text x="200" y="328" text-anchor="middle" font-size="12" font-weight="bold" fill="#666">3</text>
+                </g>
+
+                <!-- Bottom-left -->
+                <g class="position" data-position="4">
+                    <circle cx="97" cy="296" r="18" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                    <text x="97" y="304" text-anchor="middle" font-size="12" font-weight="bold" fill="#666">4</text>
+                </g>
+
+                <!-- Top-left -->
+                <g class="position" data-position="5">
+                    <circle cx="97" cy="104" r="18" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                    <text x="97" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#666">5</text>
+                </g>
+            </svg>
+        </div>
+
+        <div class="status" id="status">Player 1 (Blue): Place your piece</div>
+
+        <div class="controls">
+            <button class="new-game-btn" onclick="newGame()">New Game</button>
+            <button class="undo-btn" onclick="undoMove()">Undo</button>
+        </div>
+
+        <div class="legend">
+            <p><strong>Phase 1 (Placement):</strong> Players alternate placing pieces on empty circles or the center dot.</p>
+            <p><strong>Phase 2 (Movement):</strong> After all pieces are placed, move to adjacent circles or the center.</p>
+            <p><strong>Win Condition:</strong> Get all 3 of your pieces in a row!</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
