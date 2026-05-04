@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trias - AI Mode</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<div class="container">
+    <h1>Trias (AI Mode)</h1>
+    <p class="game-info">Play against the bot</p>
+
+    <div class="game-board">
+        <svg viewBox="0 0 400 400">
+            <circle cx="200" cy="200" r="120" fill="none" stroke="#333" stroke-width="3"/>
+
+            <!-- positions -->
+            <g class="position" data-position="0"><circle cx="200" cy="80" r="18"/></g>
+            <g class="position" data-position="1"><circle cx="303" cy="104" r="18"/></g>
+            <g class="position" data-position="2"><circle cx="303" cy="296" r="18"/></g>
+            <g class="position" data-position="3"><circle cx="200" cy="320" r="18"/></g>
+            <g class="position" data-position="4"><circle cx="97" cy="296" r="18"/></g>
+            <g class="position" data-position="5"><circle cx="97" cy="104" r="18"/></g>
+            <g class="position" data-position="6"><circle cx="200" cy="200" r="10"/></g>
+        </svg>
+    </div>
+
+    <div class="status" id="status">AI Mode Loading...</div>
+
+    <div class="controls">
+        <button class="new-game-btn" onclick="newGame()">New Game</button>
+        <button class="undo-btn" onclick="undoMove()">Undo</button>
+    </div>
+
+    <div class="legend">
+        <p><strong>You:</strong> Blue</p>
+        <p><strong>Bot:</strong> Red</p>
+    </div>
+</div>
+
+<script src="game.ai.js"></script>
+</body>
+</html>s
