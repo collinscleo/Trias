@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trias - Welcome</title>
+<link rel="stylesheet" href="web.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Trias</h1>
+
+    <button class="play-btn" onclick="openModal()">Play</button>
+
+    <div class="rules">
+        <h2>How to Play</h2>
+
+        <p><strong>Setup:</strong> Each player has 3 pieces.</p>
+
+        <p><strong>Phase 1 (Placement):</strong><br>
+        Players take turns placing their pieces on any empty spot.</p>
+
+        <p><strong>Phase 2 (Movement):</strong><br>
+        After all pieces are placed, move to adjacent positions.</p>
+
+        <p><strong>Rules:</strong><br>
+        • Move only to connected spots<br>
+        • Cannot move onto occupied spaces</p>
+
+        <p><strong>Goal:</strong><br>
+        Get 3 in a row to win.</p>
+    </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <h2>Select Mode</h2>
+
+        <button class="mode-btn" onclick="startGame('friend')">
+            Play with Friend
+        </button>
+
+        <button class="mode-btn" onclick="startGame('bot')">
+            Play vs Bot
+        </button>
+
+        <button class="mode-btn close-btn" onclick="closeModal()">
+            Cancel
+        </button>
+    </div>
+</div>
+
+<script src="landing.js"></script>
+</body>
+</html>
