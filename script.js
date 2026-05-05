@@ -1,30 +1,33 @@
 const POSITIONS = [
-    { x: 200, y: 80 },
-    { x: 303, y: 104 },
-    { x: 303, y: 296 },
-    { x: 200, y: 320 },
-    { x: 97, y: 296 },
-    { x: 97, y: 104 },
-    { x: 200, y: 200 }
+    { x: 200, y: 80 },   // 0
+    { x: 285, y: 115 },  // 1
+    { x: 320, y: 200 },  // 2
+    { x: 285, y: 285 },  // 3
+    { x: 200, y: 320 },  // 4
+    { x: 115, y: 285 },  // 5
+    { x: 80, y: 200 },   // 6
+    { x: 115, y: 115 },  // 7
+    { x: 200, y: 200 }   // 8 center
 ];
 
 const ADJACENT = {
-    0: [1, 5, 6],
-    1: [0, 2, 6],
-    2: [1, 3, 6],
-    3: [2, 4, 6],
-    4: [3, 5, 6],
-    5: [4, 0, 6],
-    6: [0, 1, 2, 3, 4, 5]
+    0: [1, 7, 8],
+    1: [0, 2, 8],
+    2: [1, 3, 8],
+    3: [2, 4, 8],
+    4: [3, 5, 8],
+    5: [4, 6, 8],
+    6: [5, 7, 8],
+    7: [6, 0, 8],
+    8: [0,1,2,3,4,5,6,7]
 };
-
 const WINNING_COMBOS = [
-    [0,1,2],[1,2,3],[2,3,4],
-    [3,4,5],[4,5,0],[5,0,1],
-    [0,6,3],[1,6,4],[2,6,5]
+    [0,1,2],[1,2,3],[2,3,4],[3,4,5],
+    [4,5,6],[5,6,7],[6,7,0],[7,0,1],
+    [0,8,4],[1,8,5],[2,8,6],[3,8,7]
 ];
 
-let board = [null, null, null, null, null, null, null];
+let board = new Array(9).fill(null);
 let currentPlayer = 1;
 let phase = 'placement';
 let piecesPlaced = {1:0, 2:0};
@@ -51,7 +54,7 @@ function animateMove(fromIndex, toIndex, player, callback) {
     const piece = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
     piece.setAttribute('cx', start.x);
     piece.setAttribute('cy', start.y);
-    piece.setAttribute('r', fromIndex === 6 ? 8 : 15);
+    piece.setAttribute('r', fromIndex === 8 ? 8 : 15);
     piece.setAttribute('fill', player === 1 ? '#1976d2' : '#c2185b');
 
     svg.appendChild(piece);
@@ -71,7 +74,7 @@ function animateMove(fromIndex, toIndex, player, callback) {
         piece.setAttribute('cx', x);
         piece.setAttribute('cy', y);
 
-        const baseR = fromIndex === 6 ? 8 : 15;
+        const baseR = fromIndex === 8 ? 8 : 15;
         piece.setAttribute('r', baseR + 3 * Math.sin(Math.PI * t));
 
         if (t < 1) {
@@ -98,7 +101,7 @@ function animateWinLine(combo) {
     line.setAttribute('y2', start.y);
 
     line.setAttribute('stroke', '#00e676');
-    line.setAttribute('stroke-width', combo.includes(6) ? '7' : '6');
+    line.setAttribute('stroke-width', combo.includes(8) ? '7' : '6');
     line.setAttribute('stroke-linecap', 'round');
     line.style.filter = 'drop-shadow(0 0 6px #00e676)';
 
@@ -238,7 +241,7 @@ function updateDisplay() {
             c.setAttribute('cx', pos.x);
             c.setAttribute('cy', pos.y);
 
-            const r = i === 6 ? 8 : 15;
+            const r = i === 8 ? 8 : 15;
             c.setAttribute('r', selectedPiece === i ? r + 7 : r);
             c.setAttribute('fill', board[i] === 1 ? '#1976d2' : '#c2185b');
 
@@ -301,7 +304,7 @@ function undoMove() {
 }
 
 function newGame() {
-    board = [null,null,null,null,null,null,null];
+    board = new Array(9).fill(null);
     currentPlayer = 1;
     phase = 'placement';
     piecesPlaced = {1:0,2:0};
